@@ -427,7 +427,18 @@ text_bkg.set_material((0, 0, 0))
 num_run_through = 0
 while DISPLAY.loop_running():
   tm = time.time()
-  if (tm > nexttm and not paused) or (tm - nexttm) >= 86400.0: # this must run first iteration of loop
+
+  skip_ahead = False
+
+  if config.MOUSE:
+    mouse = pi3d.Mouse()
+    mouse.start()
+    last_button = mouse.button_status()
+    if last_button == 9:
+      print('Skip to next photo...')
+      skip_ahead = True
+
+  if skip_ahead or (tm > nexttm and not paused) or (tm - nexttm) >= 86400.0: # this must run first iteration of loop
     if nFi > 0:
       nexttm = tm + time_delay
       sbg = sfg
@@ -550,12 +561,6 @@ while DISPLAY.loop_running():
       next_pic_num -= 2
       if next_pic_num < -1:
         next_pic_num = -1
-
-  if config.MOUSE:
-    mouse = pi3d.Mouse()
-    mouse.start()
-    last_button = mouse.button_status()
-    print(last_button)
 
   if quit: # set by MQTT
     break
