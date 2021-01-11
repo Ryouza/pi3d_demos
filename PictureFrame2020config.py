@@ -70,6 +70,8 @@ parse.add_argument(      "--display_x",     default=0, type=int, help="offset fr
 parse.add_argument(      "--display_y",     default=0, type=int, help="offset from top of screen (can be negative)")
 parse.add_argument(      "--display_w",     default=None, type=int, help="width of display surface (None will use max returned by hardware)")
 parse.add_argument(      "--display_h",     default=None, type=int, help="height of display surface")
+parse.add_argument(      "--mouse",         default=False, type=str_to_bool, help="use mouse")
+
 args = parse.parse_args()
 print(args.display_x)
 
@@ -118,6 +120,7 @@ DISPLAY_X = args.display_x
 DISPLAY_Y = args.display_y
 DISPLAY_W = args.display_w
 DISPLAY_H = args.display_h
+MOUSE = args.mouse
 
 
 CODEPOINTS = '1234567890AÄÀBCÇDÈÉÊEFGHIÍJKLMNÑOÓÖPQRSTUÚÙÜVWXYZ., _-/abcdefghijklmnñopqrstuvwxyzáéèêàçíóúäöüß' # limit to 49 ie 7x7 grid_size

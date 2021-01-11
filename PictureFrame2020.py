@@ -550,6 +550,13 @@ while DISPLAY.loop_running():
       next_pic_num -= 2
       if next_pic_num < -1:
         next_pic_num = -1
+
+  if config.MOUSE:
+    mouse = pi3d.Mouse()
+    mouse.start()
+    last_button = mouse.button_status()
+    print(last_button)
+
   if quit: # set by MQTT
     break
 
