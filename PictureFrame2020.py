@@ -197,7 +197,7 @@ def get_files(dt_from=None, dt_to=None):
     random.shuffle(temp_list_last)
     file_list = temp_list_first + temp_list_last
   elif config.LATEST_FIRST:
-    file_list.sort(key=lambda x: x[2], reverse=true)
+    file_list.sort(key=lambda x: x[2], reverse=True)
   else:
     file_list.sort() # if not suffled; sort by name
   return file_list, len(file_list) # tuple of file list, number of pictures
