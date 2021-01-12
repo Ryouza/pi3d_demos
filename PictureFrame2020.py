@@ -433,6 +433,15 @@ while DISPLAY.loop_running():
 
   skip_ahead = False
 
+  # Check for new files and reset to latest if so
+  if config.LATEST_FIRST:
+    temp_iFiles, temp_nFi = get_files(date_from, date_to)
+    if (temp_nFi != nFi):
+      iFiles = temp_iFiles
+      nFi = temp_nFi
+      next_pic_num=0
+      skip_ahead=True
+
   if config.MOUSE:
     mouse = pi3d.Mouse()
     mouse.start()
