@@ -437,6 +437,7 @@ while DISPLAY.loop_running():
   if config.LATEST_FIRST:
     temp_iFiles, temp_nFi = get_files(date_from, date_to)
     if (temp_nFi != nFi):
+      print('New file, resetting...')
       iFiles = temp_iFiles
       nFi = temp_nFi
       next_pic_num=0
@@ -447,7 +448,7 @@ while DISPLAY.loop_running():
     mouse.start()
     current_button = mouse.button_status()
     if current_button == 9 and last_button != current_button:
-      print('Skip to next photo...')
+      print('Mouse click detected, skipping to next photo...')
       skip_ahead = True
     last_button=current_button
 
