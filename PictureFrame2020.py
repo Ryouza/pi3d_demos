@@ -408,6 +408,7 @@ iFiles, nFi = get_files(date_from, date_to)
 next_pic_num = 0
 sfg = None # slide for background
 sbg = None # slide for foreground
+last_button = -1
 
 # PointText and TextBlock. If SHOW_TEXT_TM <= 0 then this is just used for no images message
 grid_size = math.ceil(len(config.CODEPOINTS) ** 0.5)
@@ -433,8 +434,8 @@ while DISPLAY.loop_running():
   if config.MOUSE:
     mouse = pi3d.Mouse()
     mouse.start()
-    last_button = mouse.button_status()
-    if last_button == 9:
+    current_button = mouse.button_status()
+    if current_button == 9 and last_button != current_button:
       print('Skip to next photo...')
       skip_ahead = True
 
