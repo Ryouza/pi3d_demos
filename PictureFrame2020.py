@@ -438,6 +438,7 @@ while DISPLAY.loop_running():
     if current_button == 9 and last_button != current_button:
       print('Skip to next photo...')
       skip_ahead = True
+    last_button=current_button
 
   if skip_ahead or (tm > nexttm and not paused) or (tm - nexttm) >= 86400.0: # this must run first iteration of loop
     if nFi > 0:
