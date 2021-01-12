@@ -58,6 +58,7 @@ parse.add_argument("-u", "--kenburns",      default=False, type=str_to_bool, hel
 parse.add_argument("-v", "--time_delay",    default=30.0, type=float, help="time between consecutive slide starts - can be changed by MQTT")
 parse.add_argument("-w", "--fade_time",     default=4.0, type=float, help="change time during which slides overlap - can be changed by MQTT")
 parse.add_argument("-x", "--shuffle",       default=True, type=str_to_bool, help="shuffle on reloading image files - can be changed by MQTT")
+parse.add_argument(      "--latest_first",  default=False, type=str_to_bool, help="shows picture in latest added order")
 parse.add_argument("-y", "--subdirectory",  default="", help="subdir of pic_dir - can be changed by MQTT")
 parse.add_argument("-z", "--blur_zoom",     default=1.0, type=float, help="must be >= 1.0 which expands the backgorund to just fill the space around the image")
 parse.add_argument(      "--auto_resize",   default=True, type=str_to_bool, help="set this to false if you want to use 4K resolution on Raspberry Pi 4. You should ensure your images are the correct size for the display")
@@ -108,6 +109,7 @@ KENBURNS = args.kenburns
 TIME_DELAY = args.time_delay
 FADE_TIME = args.fade_time
 SHUFFLE = args.shuffle
+LATEST_FIRST = args.latest_first
 SUBDIRECTORY = args.subdirectory
 BLUR_ZOOM = args.blur_zoom
 AUTO_RESIZE = args.auto_resize
