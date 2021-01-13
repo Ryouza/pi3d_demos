@@ -128,7 +128,7 @@ def tex_load(pic_num, iFiles, size=None):
         im_b.paste(im, box=(round(0.5 * (im_b.size[0] - im.size[0])),
                             round(0.5 * (im_b.size[1] - im.size[1]))))
         im = im_b # have to do this as paste applies in place
-    tex = pi3d.Texture(im, blend=True, m_repeat=True, automatic_resize=config.AUTO_RESIZE,
+    tex = pi3d.Texture(im, blend=True, m_repeat=False, automatic_resize=config.AUTO_RESIZE,
                         free_after_load=True)
     #tex = pi3d.Texture(im, blend=True, m_repeat=True, automatic_resize=config.AUTO_RESIZE,
     #                    mipmap=config.AUTO_RESIZE, free_after_load=True) # poss try this if still some artifacts with full resolution
