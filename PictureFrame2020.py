@@ -56,7 +56,7 @@ next_check_tm = time.time() + config.CHECK_DIR_TM # check if new file or directo
 #####################################################
 # some functions to tidy subsequent code
 #####################################################
-def tex_load(pic_num, iFiles, size=None):
+def texture_load(pic_num, iFiles, size=None):
   global date_from, date_to
   if type(pic_num) is int:
     fname = iFiles[pic_num][0]
@@ -173,7 +173,7 @@ def get_files(dt_from=None, dt_to=None):
               file_path_name = os.path.join(root, filename)
               include_flag = True
               orientation = 1 # this is default - unrotated
-              dt = None # if exif data not read - used for checking in tex_load
+              dt = None # if exif data not read - used for checking in texture_load
               fdt = None
               location = ""
               if not config.DELAY_EXIF and EXIF_DATID is not None and EXIF_ORIENTATION is not None:
@@ -461,7 +461,7 @@ while DISPLAY.loop_running():
       loop_count = 0
       while sfg is None: # keep going through until a usable picture is found
         pic_num = next_pic_num
-        sfg = tex_load(pic_num, iFiles, (DISPLAY.width, DISPLAY.height))
+        sfg = texture_load(pic_num, iFiles, (DISPLAY.width, DISPLAY.height))
         next_pic_num += 1
         if next_pic_num >= nFi:
           num_run_through += 1
@@ -470,7 +470,7 @@ while DISPLAY.loop_running():
             random.shuffle(iFiles)
           next_pic_num = 0
         loop_count += 1
-        if loop_count > nFi: #i.e. no images found where tex_load doesn't return None
+        if loop_count > nFi: #i.e. no images found where texture_load doesn't return None
           nFi = 0
           break
       # set the file name as the description
@@ -494,7 +494,7 @@ while DISPLAY.loop_running():
         text_bkg.set_alpha(0.0)
       text.regen()
     if sfg is None:
-      sfg = tex_load(config.NO_FILES_IMG, 1, (DISPLAY.width, DISPLAY.height))
+      sfg = texture_load(config.NO_FILES_IMG, 1, (DISPLAY.width, DISPLAY.height))
       if sfg is None:
           print("NO FILES image not loaded, check path!")
           break
